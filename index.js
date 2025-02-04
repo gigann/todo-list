@@ -1,5 +1,3 @@
-// var todoListItems = [];
-
 var toDoList = document.getElementById('to-do-list');
 var newItemInput = document.getElementById('new-item-input');
 var addItemButton = document.getElementById('add-item-button');
@@ -10,17 +8,19 @@ var addItemButton = document.getElementById('add-item-button');
  */
 var addItem = (item) => {
     // create the list item element
+    let id = crypto.randomUUID();
+
     let newItem = document.createElement('li');
-    newItem.id = `item ${item}`;
+    newItem.id = `item ${id}`;
 
     // add a checkbox to the item
     let newItemCheckbox = document.createElement('input');
     newItemCheckbox.type = 'checkbox';
-    newItemCheckbox.id = item;
+    newItemCheckbox.id = `checkbox ${id}`;
 
     // add a label to the item
     let newItemLabel = document.createElement('label');
-    newItemLabel.htmlFor = item;
+    newItemLabel.htmlFor = `checkbox ${id}`;
     newItemLabel.innerHTML = item;
 
     // add a remove button to the item
@@ -30,7 +30,7 @@ var addItem = (item) => {
 
     // When a remove button is clicked, the list item is removed
     removeButton.addEventListener('click', function () {
-        document.getElementById(`item ${item}`).remove();
+        document.getElementById(`item ${id}`).remove();
     });
 
     newItem.appendChild(newItemCheckbox);
