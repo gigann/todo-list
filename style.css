@@ -31,3 +31,13 @@ input:checked + label {
     background-color: white;
     border: none;
 }
+
+#remove-button:hover {
+    color: white;
+    background-color: red;
+    border: none;
+}
+
+li:hover{
+    color:gray;
+}
