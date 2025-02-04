@@ -1,3 +1,15 @@
 h1 {
     color: purple;
 }
+
+input[type='checkbox'] {
+    display: none;
+}
+
+/* label {
+
+} */
+
+input:checked + label {
+    text-decoration: line-through;
+}

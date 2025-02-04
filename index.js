@@ -1,15 +1,41 @@
-console.log('My code is running');
+// var todoListItems = [];
 
-var todoListItems = [];
+var toDoList = document.getElementById('to-do-list');
+var newItemInput = document.getElementById('new-item-input');
+var addItemButton = document.getElementById('add-item-button');
 
 /**
  * Adds an item to the todo list.
  * @param {*} item
  */
 var addItem = (item) => {
-    todoListItems.push(item);
+    // create the list item element
+    let newItem = document.createElement('li');
+
+    // add a checkbox to the item
+    let newItemCheckbox = document.createElement('input');
+    newItemCheckbox.type = 'checkbox';
+    newItemCheckbox.id = item;
+
+    // add a label to the item
+    let newItemLabel = document.createElement('label');
+    newItemLabel.htmlFor = item;
+    newItemLabel.innerHTML = item;
+
+    newItem.appendChild(newItemCheckbox);
+    newItem.appendChild(newItemLabel);
+
+    // add the li element to the list ul element
+    toDoList.appendChild(newItem);
 }
 
-var populateHTML = () => {
+// When the add item button is clicked, the item in the new item input is added to the to-do list.
+addItemButton.addEventListener('click', function () {
+    // add the item
+    addItem(newItemInput.value);
 
-}
+    // clear the input
+    newItemInput.value = '';
+});
+
+// When a list item is clicked, its "finished" state is toggled
