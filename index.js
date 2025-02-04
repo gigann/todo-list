@@ -11,6 +11,7 @@ var addItemButton = document.getElementById('add-item-button');
 var addItem = (item) => {
     // create the list item element
     let newItem = document.createElement('li');
+    newItem.id = `item ${item}`;
 
     // add a checkbox to the item
     let newItemCheckbox = document.createElement('input');
@@ -22,8 +23,18 @@ var addItem = (item) => {
     newItemLabel.htmlFor = item;
     newItemLabel.innerHTML = item;
 
+    // add a remove button to the item
+    let removeButton = document.createElement('button');
+    removeButton.innerHTML = 'X';
+
+    // When a remove button is clicked, the list item is removed
+    removeButton.addEventListener('click', function () {
+        document.getElementById(`item ${item}`).remove();
+    });
+
     newItem.appendChild(newItemCheckbox);
     newItem.appendChild(newItemLabel);
+    newItem.appendChild(removeButton);
 
     // add the li element to the list ul element
     toDoList.appendChild(newItem);
@@ -37,5 +48,3 @@ addItemButton.addEventListener('click', function () {
     // clear the input
     newItemInput.value = '';
 });
-
-// When a list item is clicked, its "finished" state is toggled
