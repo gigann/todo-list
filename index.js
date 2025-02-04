@@ -25,6 +25,7 @@ var addItem = (item) => {
 
     // add a remove button to the item
     let removeButton = document.createElement('button');
+    removeButton.id = 'remove-button';
     removeButton.innerHTML = 'X';
 
     // When a remove button is clicked, the list item is removed
