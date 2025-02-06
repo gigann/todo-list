@@ -1,3 +1,21 @@
+/**
+ * Saves the page into local storage
+ */
+var savePage = () => {
+    // localStorage.setItem('todo-list-page', document.body.innerHTML);
+}
+
+/**
+ * Loads the page from local storage
+ */
+var loadPage = () => {
+    if (localStorage.getItem('todo-list-page') != undefined) {
+        // document.body.innerHTML = localStorage.getItem('todo-list-page');
+    }
+}
+
+loadPage();
+
 var toDoList = document.getElementById('to-do-list');
 var newItemInput = document.getElementById('new-item-input');
 var addItemButton = document.getElementById('add-item-button');
@@ -30,7 +48,10 @@ var addItem = (item) => {
 
     // When a remove button is clicked, the list item is removed
     removeButton.addEventListener('click', function () {
-        document.getElementById(`item ${id}`).remove();
+        document.getElementById(this.parentElement.id).remove();
+
+        // save the to-do list in local storage
+        savePage();
     });
 
     newItem.appendChild(newItemCheckbox);
@@ -48,4 +69,7 @@ addItemButton.addEventListener('click', function () {
 
     // clear the input
     newItemInput.value = '';
+
+    // save the to-do list in local storage
+    savePage();
 });
